@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DrinkItem.css";
 import { assets } from "../../assets/assets";
+import { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 function DrinkItem({ id, name, price, description, image }) {
+  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+
   return (
     <div className="drink-item">
       <div className="drink-item-img-container">
         <img className="drink-item-image" src={image} alt={name} />
+
+        {!cartItems[id] ? (
+          <img
+            className="add"
+            onClick={() => addToCart(id)}
+            src={assets.add_icon_white}
+            alt=""
+          />
+        ) : (
+          <div className="drink-item-counter">
+            <img
+              onClick={() => removeFromCart(id)}
+              src={assets.remove_icon_red}
+              alt=""
+            />
+
+            {/* FIXED: Show quantity, not the whole object */}
+            <p>{cartItems[id]}</p>
+
+            <img
+              onClick={() => addToCart(id)}
+              src={assets.add_icon_green}
+              alt=""
+            />
+          </div>
+        )}
       </div>
 
       <div className="drink-item-info">

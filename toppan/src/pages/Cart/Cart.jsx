@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { drink_list } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
     useContext(StoreContext);
+  const navigate = useNavigate();
 
   const subtotal = getTotalCartAmount();
-  const deliveryFee = 2;
+  const deliveryFee = getTotalCartAmount() === 0 ? 0 : 10;
   const vat = subtotal * 0.15; // 15% VAT
   const totalWithVat = subtotal + vat + deliveryFee;
 
@@ -77,7 +79,9 @@ function Cart() {
             </div>
           </div>
 
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate("/order")}>
+            PROCEED TO CHECKOUT
+          </button>
         </div>
 
         <div className="cart-promocode">

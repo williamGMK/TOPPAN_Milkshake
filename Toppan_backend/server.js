@@ -6,14 +6,16 @@ import drinkRouter from "./routes/drinkRoute.js";
 const app = express();
 const port = 4000;
 
-// middleware
 app.use(express.json());
 app.use(cors());
 
-// database
+// Serve uploaded images
+app.use("/images", express.static("uploads"));
+
+// DB
 connectDB();
 
-// routes
+// Routes
 app.use("/api/drink", drinkRouter);
 
 app.get("/", (req, res) => {

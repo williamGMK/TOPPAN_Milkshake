@@ -1,14 +1,24 @@
 .drink-display {
-  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Reduced from 240px */
+  gap: 15px; /* Reduced from 20px */
+  margin-top: 25px; /* Reduced from 30px */
 }
 .drink-display h2 {
-  font-size: max(2vw, 24px);
+  font-size: max(1.8vw, 20px); /* Reduced from max(2vw, 24px) */
   font-weight: 600;
 }
 .drink-display-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-top: 30px;
-  gap: 30px;
-  row-gap: 50px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(160px, 1fr)
+  ); /* Reduced from 220px */
+  margin-top: 40px; /* Reduced from 30px */
+  gap: 20px; /* Reduced from 30px */
+  row-gap: 40px; /* Reduced from 50px */
+  justify-content: start; /* ADDED: Align grid items to the left */
 }

@@ -4,6 +4,7 @@ import { connectDB } from "./config/db.js";
 import drinkRouter from "./routes/drinkRoute.js";
 import userRouter from "./routes/userRoute.js";
 import "dotenv/config";
+import cartRouter from "./routes/cartRoute.js";
 
 const app = express();
 const port = 4000;
@@ -14,6 +15,7 @@ app.use(cors());
 // Serve uploaded images
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
 
 // DB
 connectDB();

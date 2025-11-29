@@ -4,7 +4,7 @@ import { menu_list } from "../../assets/assets";
 
 function ExploreMenu({ category, setCategory }) {
   return (
-    <div className="explore-menu" id="explore-menu">
+    <div className="explore-menu" id="menu">
       <h1 className="explore-menu">Explore Our Menu</h1>
       <p className="explore-menu-text">
         Choose from a diverse menu featuring a delectable array of cups crafted

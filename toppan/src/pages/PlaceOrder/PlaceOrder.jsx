@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PlaceOrder() {
   const { getTotalCartAmount, token, drink_list, cartItems, url } =
@@ -63,6 +65,16 @@ function PlaceOrder() {
   const deliveryFee = subtotal === 0 ? 0 : 10;
   const vat = subtotal * 0.15;
   const totalWithVat = subtotal + deliveryFee + vat;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/cart");
+    } else if (getTotalCartAmount() === 0) {
+      navigate("/cart");
+    }
+  }, [token]);
 
   return (
     <form onSubmit={handlePlaceOrder} className="place-order">

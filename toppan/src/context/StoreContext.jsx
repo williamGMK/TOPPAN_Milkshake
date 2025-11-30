@@ -34,7 +34,6 @@ const StoreContextProvider = (props) => {
       ...prev,
       [itemId]: (prev[itemId] || 0) + 1,
     }));
-
     await axios.post(url + "/api/cart/add", { itemId }, { headers: { token } });
   };
 

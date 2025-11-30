@@ -17,7 +17,7 @@ function DrinkItem({ id, name, price, description, image }) {
           alt={name}
         />
 
-        {!cartItems[id] ? (
+        {!cartItems?.[id] ? (
           <img
             className="add"
             onClick={() => addToCart(id)}
@@ -32,7 +32,6 @@ function DrinkItem({ id, name, price, description, image }) {
               alt=""
             />
 
-            {/* FIXED: Show quantity, not the whole object */}
             <p>{cartItems[id]}</p>
 
             <img
